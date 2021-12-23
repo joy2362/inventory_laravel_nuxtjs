@@ -44,7 +44,9 @@
                     required
                   ></b-form-input>
                 </b-form-group>
-
+                <nuxt-link :to="{ name: 'login' }"
+                  >Have account?</nuxt-link
+                >
                 <b-button type="submit" variant="primary">Sign Up</b-button>
               </b-form>
             </b-card-body>
@@ -75,8 +77,7 @@ export default {
           email: this.form.email,
           password: this.form.password,
         });
-       await this.$auth
-          .setUserToken(response.access_token);
+        await this.$auth.setUserToken(response.access_token);
         console.log(response.status);
       } catch (err) {
         console.log(err);

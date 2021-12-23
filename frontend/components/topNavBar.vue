@@ -17,7 +17,7 @@
             <template #button-content>
               {{ user.name }}
             </template>
-            <b-dropdown-item href="#" @click="logout">Logout</b-dropdown-item>
+            <b-dropdown-item href="#" @click="logout" >Logout</b-dropdown-item>
           </b-nav-item-dropdown>
         </b-navbar-nav>
       </b-collapse>

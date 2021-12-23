@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\UnitController;
 use App\Http\Controllers\UserAuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -32,7 +33,7 @@ Route::group([
 
 });
 
-//auth
+//category
 Route::group([
 
     'middleware' => 'api',
@@ -43,5 +44,20 @@ Route::group([
     Route::get('index', [CategoryController::class,'index']);
     Route::get('delete/{id}', [CategoryController::class,'destroy']);
     Route::post('store', [CategoryController::class,'store']);
+    Route::post('update/{id}', [CategoryController::class,'update']);
 
+});
+
+//unit
+Route::group([
+
+    'middleware' => 'api',
+    'prefix' => 'unit'
+
+], function () {
+
+    Route::get('index', [UnitController::class,'index']);
+    Route::get('delete/{id}', [UnitController::class,'destroy']);
+    Route::post('store', [UnitController::class,'store']);
+    Route::post('update/{id}', [UnitController::class,'update']);
 });
