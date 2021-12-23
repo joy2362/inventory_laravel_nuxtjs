@@ -1,7 +1,7 @@
 <template>
   <div>
     <b-navbar toggleable="lg" type="dark" variant="info">
-      <b-navbar-brand href="#">Inventory</b-navbar-brand>
+      <b-navbar-brand>Inventory</b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
@@ -29,18 +29,46 @@
         backdrop-variant="transparent"
         backdrop
         shadow
+        bg-variant="dark"
+        text-variant="white"
+        width="200px"
       >
-        <template #footer="{ hide }">
-          <div class="d-flex bg-dark text-light align-items-center px-3 py-2">
-            <strong class="mr-auto">Footer</strong>
-            <b-button size="sm" @click="hide">Close</b-button>
-          </div>
-        </template>
         <div class="px-3 py-2">
           <nav class="mb-3">
             <b-nav vertical>
-              <b-nav-item>Category</b-nav-item>
-              <b-nav-item>Unit</b-nav-item>
+              <b-nav-item>
+                <nuxt-link :to="{ name: 'index' }" class="btn btn-sm btn-info">
+                  <b-icon
+                    animation="cylon"
+                    icon="gear-fill"
+                    aria-hidden="true"
+                  ></b-icon>
+                  Home</nuxt-link
+                >
+              </b-nav-item>
+              <b-nav-item
+                ><nuxt-link
+                  :to="{ name: 'category' }"
+                  class="btn btn-sm btn-info"
+                >
+                  <b-icon
+                    animation="cylon"
+                    icon="gear-fill"
+                    aria-hidden="true"
+                  ></b-icon>
+                  Category</nuxt-link
+                ></b-nav-item
+              >
+              <b-nav-item
+                ><nuxt-link :to="{ name: 'unit' }" class="btn btn-sm btn-info">
+                  <b-icon
+                    animation="cylon"
+                    icon="gear-fill"
+                    aria-hidden="true"
+                  ></b-icon>
+                  Unit</nuxt-link
+                ></b-nav-item
+              >
               <b-nav-item>Product</b-nav-item>
               <b-nav-item>Sale</b-nav-item>
             </b-nav>
@@ -63,7 +91,7 @@ export default {
     async logout() {
       try {
         await this.$auth.logout();
-        await redirect('login')
+        await redirect("login");
       } catch (err) {
         console.log(err);
       }
