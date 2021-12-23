@@ -56,7 +56,8 @@
 </template>
 <script>
 export default {
-  name: "registaer",
+  name: "register",
+  auth: "guest",
   data() {
     return {
       form: {
@@ -67,8 +68,19 @@ export default {
     };
   },
   methods: {
-    onSubmit() {
-        console.log(user)
+    async onSubmit() {
+      try {
+        let response = await this.$axios.$post("/auth/register", {
+          name: this.form.name,
+          email: this.form.email,
+          password: this.form.password,
+        });
+       await this.$auth
+          .setUserToken(response.access_token);
+        console.log(response.status);
+      } catch (err) {
+        console.log(err);
+      }
     },
   },
 };

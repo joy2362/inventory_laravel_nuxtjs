@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class UserAuthController extends Controller
 {
@@ -14,7 +18,7 @@ class UserAuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login']]);
+        $this->middleware('auth:api', ['except' => ['login','register']]);
     }
 
     /**
@@ -30,6 +34,36 @@ class UserAuthController extends Controller
             return response()->json(['error' => 'Unauthorized'], 401);
         }
 
+        return $this->respondWithToken($token);
+    }
+
+    /**
+     * register user and login
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function register(Request $request)
+    {
+        $validator = Validator::make($request->all(),[
+            'email' => 'required|| unique:users,email',
+            'name' => 'required',
+            'password' => 'required|min:5',
+        ]);
+
+        if ($validator->fails()){
+            return response()->json([
+                'errors' => $validator->messages()
+            ],400);
+        }
+
+        $user = User::create([
+           'name'=>$request->input('name'),
+           'email'=>$request->input('email'),
+           'password'=>Hash::make($request->input('password')),
+        ]);
+
+
+        $token = auth()->login($user);
         return $this->respondWithToken($token);
     }
 

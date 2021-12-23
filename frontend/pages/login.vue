@@ -35,7 +35,7 @@
                     required
                   ></b-form-input>
                 </b-form-group>
-                <a>Create new Account</a>
+                <nuxt-link :to="{ name: 'register'}">Create new Account</nuxt-link>
 
                 <b-button type="submit" variant="primary">login</b-button>
               </b-form>
