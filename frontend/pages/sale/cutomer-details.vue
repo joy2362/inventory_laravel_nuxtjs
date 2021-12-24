@@ -40,7 +40,6 @@
         </b-col>
       </b-row>
     </b-container>
-    <pre>{{ selected }}</pre>
   </div>
 </template>
 <script >

@@ -53,8 +53,8 @@ export default {
   data() {
     return {
       form: {
-        email: "joy@asc.com",
-        password: "987456321",
+        email: "",
+        password: "",
       },
     };
   },

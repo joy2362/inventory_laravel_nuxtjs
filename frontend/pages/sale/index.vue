@@ -54,16 +54,12 @@
               </b-table>
             </b-card-body>
             <b-card-footer>
-              <nuxt-link :to="{name: 'sale-cutomer-details' , params: { selected: selected }}">Proceed </nuxt-link>
-                <b-btn class="float-right" v-if="selected" v-b-modal.customer_details>
-                  Proceed
-                </b-btn>
+              <nuxt-link class="float-right" :to="{name: 'sale-cutomer-details' , params: { selected: selected }}">Proceed </nuxt-link>
             </b-card-footer>
           </b-card>
         </b-col>
       </b-row>
     </b-container>
-    <pre>{{selected}}</pre>
   </div>
 </template>
 
