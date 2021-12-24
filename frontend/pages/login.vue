@@ -61,7 +61,7 @@ export default {
   methods: {
     async  onSubmit() {
        try {
-        let response = await this.$auth.loginWith('local', { data: this.form })
+        let response = await this.$auth.loginWith('local', { data: this.form }).then(() => this.$toast.success('Logged In!'))
         console.log(response)
       } catch (err) {
         console.log(err)

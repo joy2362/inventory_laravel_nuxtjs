@@ -23,6 +23,7 @@ class CreateProductsTable extends Migration
             $table->text('description');
             $table->string('image');
             $table->integer('quantity');
+            $table->integer('price');
             $table->enum('alert_quantity',['active','inactive'])->default('inactive');
             $table->enum('status',['active','inactive'])->default('active');
             $table->timestamps();

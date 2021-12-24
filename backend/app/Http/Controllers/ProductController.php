@@ -30,6 +30,7 @@ class ProductController extends Controller
            'product' => $product
         ]);
     }
+
     /**
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
@@ -44,6 +45,7 @@ class ProductController extends Controller
             'brand' => 'required',
             'quantity' => 'required',
             'image' => 'required',
+            'price' => 'required',
         ]);
 
         if ($validator->fails()){
@@ -69,6 +71,7 @@ class ProductController extends Controller
         $product->unit_id = $request->input('unit');
         $product->brand = $request->input('brand');
         $product->quantity = $request->input('quantity');
+        $product->price = $request->input('price');
 
         $product->save();
         return response()->json([
@@ -91,6 +94,7 @@ class ProductController extends Controller
             'unit' => 'required',
             'brand' => 'required',
             'quantity' => 'required',
+            'price' => 'required',
         ]);
 
         if ($validator->fails()){
@@ -107,6 +111,8 @@ class ProductController extends Controller
              "unit_id" => $request->input('unit'),
              "brand" => $request->input('brand'),
              "quantity" => $request->input('quantity'),
+             "price" => $request->input('price'),
+
         ]);
 
         return response()->json([

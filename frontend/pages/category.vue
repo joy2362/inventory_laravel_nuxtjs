@@ -160,12 +160,11 @@ export default {
       form: {
         name: "",
         description: "",
-       
       },
       editform: {
         name: "",
         description: "",
-         id: "",
+        id: "",
       },
       category: {},
     };
@@ -196,6 +195,7 @@ export default {
         this.$bvModal.hide("new_category");
         this.form.name = "";
         this.form.description = "";
+        this.$toast.success(response.message);
       } catch (err) {
         console.log(err);
       }
@@ -212,7 +212,7 @@ export default {
         );
         this.fethCategory();
         this.$bvModal.hide("edit_category");
-
+        this.$toast.success(response.message);
         this.editform.name = "";
         this.editform.id = "";
         this.editform.description = "";
@@ -234,11 +234,12 @@ export default {
       try {
         let response = await this.$axios.$get("/category/delete/" + id);
         this.fethCategory();
+        this.$toast.success(response.message);
       } catch (err) {
         console.log(err);
       }
     },
-    
+
     editCategory(item) {
       this.editform.name = item.name;
       this.editform.id = item.id;

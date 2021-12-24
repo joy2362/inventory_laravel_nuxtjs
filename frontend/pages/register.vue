@@ -77,8 +77,7 @@ export default {
           email: this.form.email,
           password: this.form.password,
         });
-        await this.$auth.setUserToken(response.access_token);
-        console.log(response.status);
+        await this.$auth.setUserToken(response.access_token).then(() => this.$toast.success('Registation complete!'));
       } catch (err) {
         console.log(err);
       }

@@ -171,6 +171,7 @@ export default {
         this.$bvModal.hide("new_unit");
         this.form.name = "";
         this.form.code = "";
+        this.$toast.success(response.message);
       } catch (err) {
         console.log(err);
       }
@@ -187,11 +188,12 @@ export default {
       try {
         let response = await this.$axios.$get("/unit/delete/" + id);
         this.fethunit();
+        this.$toast.success(response.message);
       } catch (err) {
         console.log(err);
       }
     },
-     async UpdateUnit() {
+    async UpdateUnit() {
       try {
         let response = await this.$axios.$post(
           "/unit/update/" + this.editform.id,
@@ -200,9 +202,9 @@ export default {
             code: this.editform.code,
           }
         );
+        this.$toast.success(response.message);
         this.fethunit();
         this.$bvModal.hide("edit_unit");
-
         this.editform.name = "";
         this.editform.id = "";
         this.editform.code = "";

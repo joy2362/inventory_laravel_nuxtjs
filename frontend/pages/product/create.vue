@@ -81,6 +81,22 @@
                       ></b-form-input>
                     </b-form-group>
                   </b-col>
+                  <b-col>
+                    <b-form-group
+                      id="input-group-4"
+                      label="Product price:"
+                      label-for="price"
+                    >
+                      <b-form-input
+                        id="price"
+                        placeholder="Enter Product price"
+                        required
+                        type="number"
+                        min="1"
+                        v-model="product.price"
+                      ></b-form-input>
+                    </b-form-group>
+                  </b-col>
                 </b-row>
 
                 <b-row>
@@ -172,6 +188,7 @@ export default {
         quantity: "",
         image: null,
         description: "",
+        price: "",
       },
     };
   },
@@ -195,6 +212,7 @@ export default {
     async addProduct() {
       const formData = new FormData();
       formData.append("name", this.product.name);
+      formData.append("price", this.product.price);
       formData.append("code", this.product.code);
       formData.append("category", this.product.category_id);
       formData.append("unit", this.product.unit_id);
@@ -213,6 +231,7 @@ export default {
     },
     clearForm() {
       this.product.name = "";
+      this.product.price = "";
       this.product.code = "";
       this.product.category_id = "";
       this.product.unit_id = "";

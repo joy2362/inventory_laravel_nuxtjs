@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\UserAuthController;
@@ -77,3 +78,6 @@ Route::group([
     Route::post('update/{id}', [ProductController::class,'update']);
     Route::post('update-image/{id}', [ProductController::class,'update_image']);
 });
+
+//invoice
+Route::post('sale/store', [InvoiceController::class,'store']);

@@ -81,6 +81,22 @@
                       ></b-form-input>
                     </b-form-group>
                   </b-col>
+                   <b-col>
+                    <b-form-group
+                      id="input-group-4"
+                      label="Product price:"
+                      label-for="price"
+                    >
+                      <b-form-input
+                        id="price"
+                        placeholder="Enter Product price"
+                        required
+                        type="number"
+                        min="1"
+                        v-model="product.price"
+                      ></b-form-input>
+                    </b-form-group>
+                  </b-col>
                 </b-row>
 
                 <b-row>
@@ -160,6 +176,7 @@ export default {
         quantity: "",
         description: "",
         id: "",
+        price:""
       },
     };
   },
@@ -177,6 +194,7 @@ export default {
       this.product.brand = this.$route.params.product.brand;
       this.product.quantity = this.$route.params.product.quantity;
       this.product.description = this.$route.params.product.description;
+      this.product.price = this.$route.params.product.price;
     },
     async getCategory() {
       try {
@@ -195,6 +213,7 @@ export default {
       formData.append("brand", this.product.brand);
       formData.append("quantity", this.product.quantity);
       formData.append("description", this.product.description);
+      formData.append("price", this.product.price);
 
       try {
         let response = await this.$axios.$post(
