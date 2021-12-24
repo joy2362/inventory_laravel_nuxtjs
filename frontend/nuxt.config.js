@@ -25,9 +25,9 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-   // '~/plugins/vee-validate.js'
+    // '~/plugins/vee-validate.js'
   ],
- 
+
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -44,8 +44,22 @@ export default {
     // https://go.nuxtjs.dev/bootstrap
     'bootstrap-vue/nuxt',
     '@nuxtjs/axios',
-    '@nuxtjs/auth-next'
+    '@nuxtjs/auth-next',
+    '@nuxtjs/toast'
   ],
+  toast: {
+    position: "top-right", 
+	 duration : 5000,
+    register: [ // Register custom toasts
+      {
+        name: 'my-error',
+        message: 'Oops...Something went wrong',
+        options: {
+          type: 'error'
+        }
+      }
+    ]
+  },
   bootstrapVue: {
     icons: true
   },

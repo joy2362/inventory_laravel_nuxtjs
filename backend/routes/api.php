@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\UserAuthController;
 use Illuminate\Http\Request;
@@ -60,4 +61,19 @@ Route::group([
     Route::get('delete/{id}', [UnitController::class,'destroy']);
     Route::post('store', [UnitController::class,'store']);
     Route::post('update/{id}', [UnitController::class,'update']);
+});
+
+//product
+Route::group([
+
+    'middleware' => 'api',
+    'prefix' => 'product'
+
+], function () {
+
+    Route::get('index', [ProductController::class,'index']);
+    Route::get('delete/{id}', [ProductController::class,'destroy']);
+    Route::post('store', [ProductController::class,'store']);
+    Route::post('update/{id}', [ProductController::class,'update']);
+    Route::post('update-image/{id}', [ProductController::class,'update_image']);
 });

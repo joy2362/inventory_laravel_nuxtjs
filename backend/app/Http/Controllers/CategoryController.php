@@ -40,7 +40,7 @@ class CategoryController extends Controller
 
         return response()->json([
             'status'=>200,
-           'message'=>"Category Added"
+           'message'=>"Category Added Successful"
         ]);
     }
 
@@ -69,7 +69,7 @@ class CategoryController extends Controller
 
         return response()->json([
             'status'=>200,
-            'message'=>"Category Update"
+            'message'=>"Category Update Successful"
         ]);
     }
 
@@ -81,7 +81,7 @@ class CategoryController extends Controller
         Category::destroy($id);
         return response()->json([
             'status'=>200,
-            'message'=>"Category Deleted"
+            'message'=>"Category Deleted Successful"
         ]);
     }
 }
